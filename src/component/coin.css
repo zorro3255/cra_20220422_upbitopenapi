@@ -1,0 +1,22 @@
+body{
+    width:600px;
+    margin: 0px auto;
+    /*border: 1px solid red;*/
+}
+
+table.tbl {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table.tbl td {
+    border: 1px solid #bbbbbb;
+}
+
+div.search{
+    margin: 15px 0px;
+}
+
+a {
+    text-decoration: none;
+}
