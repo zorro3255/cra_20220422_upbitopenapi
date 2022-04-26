@@ -8,7 +8,8 @@ class News extends React.Component{
     };
 
     getData = () =>{
-        const url = '/v1/search/news.json?query='+this.props.market; 
+        const url = `${process.env.REACT_APP_NAVER_NEWS_API}?query=${this.props.market}`;
+        console.log(url);
         axios.get(url, {headers: { 'X-Naver-Client-Id': 'HNnhP0fKkhnuNfXxlG7u', 'X-Naver-Client-Secret': 'wndYohlBPa'}}).then(response => {this.setState({data:response.data.items})});
     };
 
