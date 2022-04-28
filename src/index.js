@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import CoinList from './component/coinlist';
+import CoinList from './materialcomponent/coinlist';
 import CoinListItemDetail from './component/coinlistitemdetail';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Routes, Route, useLocation, useParams } from 'react-router-dom';
