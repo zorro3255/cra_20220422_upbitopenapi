@@ -1,12 +1,12 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import ReactDOM from 'react-dom';
 import './index.css';
 import CoinList from './component/coinlist';
 import CoinListItemDetail from './component/coinlistitemdetail';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Routes, Route, useLocation, useParams } from 'react-router-dom';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+//const root = ReactDOM.createRoot(document.getElementById('root'));
 
 const Wrapper = (props) => {
   const params = useParams();
@@ -14,17 +14,16 @@ const Wrapper = (props) => {
   return <CoinListItemDetail {...{...props, match: {params}, location} } />
 }
 
-root.render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<CoinList />} />
-        {/*<Route path="/" element={<News />} />*/}
-        <Route path="/detail/:name" element={<Wrapper />} />
-      </Routes>
-    </BrowserRouter>
-  </React.StrictMode>
-);
+ReactDOM.render(
+<React.StrictMode>
+  <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<CoinList />} />
+      {/*<Route path="/" element={<News />} />*/}
+      <Route path="/detail/:name" element={<Wrapper />} />
+    </Routes>
+  </BrowserRouter>
+</React.StrictMode>, document.getElementById('root'));
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
