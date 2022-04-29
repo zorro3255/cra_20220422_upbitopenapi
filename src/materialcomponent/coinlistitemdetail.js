@@ -8,14 +8,14 @@ import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
 const CSSBlock = styled.div`
 .title{
     background-color:#cccccc;
-    padding 5px 10px;
+    padding 1px 10px;
+    width: 40%
 }
 
 .body{
