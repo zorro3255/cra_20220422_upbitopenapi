@@ -3,43 +3,58 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 const CSSBlock = styled.div`
-ol, ul {
-    list-style-type: none;
+.Nlnb_inner:after {
+    display: table;
+    clear: both;
+    content: '';
 }
 
-.lnb_menu {
-    position: relative;
-    z-index: 5900;
-    border-bottom: 1px solid #ebeeef;
-    -webkit-box-shadow: 0 1px 4px 0 rgb(0 0 0 / 5%);
-    box-shadow: 0 1px 4px 0 rgb(0 0 0 / 5%);
-    outline: 0;
-    letter-spacing: -.25px;
+.Nlnb {
+    height: 39px;
+    border-bottom: 1px solid #e5e5e5;
     background-color: #fff;
 }
 
-li {
-    text-align: -webkit-match-parent;
+.Nlnb .Nnav .Nnav_item {
+    display: inline-block;
+    position: relative;
+    font-size: 12pt;
+    color: #2b2b2c;
+    line-height: 39px;
+    font-weight: bold;
 }
 
-a:-webkit-any-link {
-    color: -webkit-link;
-    cursor: pointer;
+.Nlnb .Nnav .Nnav_cell {
+    position: relative;
+    float: left;
+    margin-right: 20px;
 }
 
-.lnb_menu li a{
-    display: 'block';
-    float: 'left';
-    overflow: 'hidden';
-    position: 'relative';
-    height: '51px';
-    padding: '0 12px';
-    fontSize: '1.5rem';
-    lineHeight: '51px';
-    color: '#202020';
-    fontWeight: '500';
-    whiteSpace: 'nowrap';
-    textDecoration: 'none';
+.Nlnb .Nnav .Nnav_item_active {
+    color: #03c75a;
+}
+
+.Nlnb .Nnav .Nnav_item_active:after,
+.Nlnb .Nnav .Nmore .Nnav_item_active .Nnav_txt:after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    border-bottom: 3px solid #03c75a;
+}
+
+.Nlnb .Nnav .Nmore .Nnav_item_active:after {
+    display: none;
+}
+
+ul, ol {
+    list-style: none
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
 }
 `;
 
@@ -48,12 +63,13 @@ class Navigation extends React.Component {
         return (
             <React.Fragment>
                 <CSSBlock>
-                <div class="lnb_group">
-                    <div class="lnb_menu">
-                        <ul role="tablist" class="base">
-                            <li role="presentation" class="menu">
-                                <Link to="/">메인목록</Link></li></ul> </div></div>
-                                </CSSBlock>
+                    <div class="Nlnb">
+                        <ul class="Nnav">
+                            <li class="Nnav_cell"><Link to="/">코인리스트</Link></li>
+                            <li class="Nnav_cell"><Link to="/guide">안내</Link></li>
+                        </ul>
+                    </div>
+                </CSSBlock>
             </React.Fragment>
         );
     }
