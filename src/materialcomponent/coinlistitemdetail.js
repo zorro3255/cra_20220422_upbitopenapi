@@ -13,10 +13,16 @@ import Paper from '@material-ui/core/Paper';
 
 const CSSBlock = styled.div`
 .title{
-    background-color:#cccccc;
-    padding 1px 10px;
-    width: 40%
+    background-color:#eeeeee;
+    width: 50%;
 }
+
+@media screen and (min-width:800px){
+    .title{
+        width: 25%;
+    }
+}
+
 `;
 
 class CoinListItemDetail extends React.Component {
