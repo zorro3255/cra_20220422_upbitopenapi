@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import CoinList from './materialcomponent/coinlist';
-import CoinListItemDetail from './component/coinlistitemdetail';
+import CoinListItemDetail from './materialcomponent/coinlistitemdetail';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Routes, Route, useLocation, useParams } from 'react-router-dom';
 import Guide from './materialcomponent/guide';

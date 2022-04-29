@@ -80,7 +80,7 @@ class CoinList extends React.Component {
                             {this.state.data.length === 0 && !this.state.call ? <TableRow key='nodata'><TableCell align="center" colSpan="2">
                                 Loading...</TableCell></TableRow> : (this.state.data.length === 0 && this.state.call ? <TableRow key='nodata'><TableCell align="center" colSpan="2">
                                     검색결과가 없습니다.</TableCell></TableRow> : this.state.data.map(item => (<TableRow key={item.market}>
-                                        <TableCell component="th" scope="row">{item.market}</TableCell>
+                                        <TableCell scope="row">{item.market}</TableCell>
                                         <TableCell align="left"><Link to={{pathname:`/detail/${item.market}?korean_name=${encodeURIComponent(item.korean_name)}`}}>{this.state.coinName === 'en' ? item.english_name : item.korean_name}{item.market_warning === 'CAUTION' ? <span className="warning">*</span> : null}</Link></TableCell>
                                     </TableRow>)))}
                         </TableBody>
