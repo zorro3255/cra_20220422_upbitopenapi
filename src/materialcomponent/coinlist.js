@@ -13,6 +13,7 @@ import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import {Link} from 'react-router-dom';
+import {Navigation} from '../component/navigation';
 
 class CoinList extends React.Component {
     state = {
@@ -62,6 +63,7 @@ class CoinList extends React.Component {
     render() {
         return (
             <React.Fragment>
+                <Navigation />
                 <Header title="코인목록" />
                 <div className='search'>
                     <TextField label="암호화폐명" onKeyUp={this.onKeyUp} onBlur={this.onBlur} /> <Button variant="contained" color="primary" onClick={this.onClick}>검색</Button>
