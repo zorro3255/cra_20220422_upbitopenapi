@@ -63,10 +63,10 @@ class Navigation extends React.Component {
         return (
             <React.Fragment>
                 <CSSBlock>
-                    <div class="Nlnb">
-                        <ul class="Nnav">
-                            <li class="Nnav_cell"><Link to="/">코인리스트</Link></li>
-                            <li class="Nnav_cell"><Link to="/guide">안내</Link></li>
+                    <div className="Nlnb">
+                        <ul className="Nnav">
+                            <li className="Nnav_cell"><Link to="/">코인리스트</Link></li>
+                            <li className="Nnav_cell"><Link to="/guide">안내</Link></li>
                         </ul>
                     </div>
                 </CSSBlock>
