@@ -17,10 +17,6 @@ const CSSBlock = styled.div`
     padding 1px 10px;
     width: 40%
 }
-
-.body{
-    padding 0px 5px;
-}
 `;
 
 class CoinListItemDetail extends React.Component {
