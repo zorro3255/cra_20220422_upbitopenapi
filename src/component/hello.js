@@ -6,7 +6,7 @@ class Hello extends React.Component {
     render(){
         return (
             <React.Fragment>
-                <div style={{display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center', height:'100%'}}>
+                <div style={{display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center', minHeight:'100vh'}}>
                     <img width="30%" src={bitcoin} alt="bitcoin" />
                     <div><Link to="/coinlist">들어가기</Link></div>
                 </div>
