@@ -6,6 +6,7 @@ import CoinListItemDetail from './materialcomponent/coinlistitemdetail';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Routes, Route, useLocation, useParams } from 'react-router-dom';
 import Guide from './materialcomponent/guide';
+import Hello from './component/hello';
 
 //const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -19,7 +20,8 @@ ReactDOM.render(
 <React.StrictMode>
   <BrowserRouter>
     <Routes>
-      <Route path="/" element={<CoinList />} />
+      <Route path="/" element={<Hello />} />
+      <Route path="/coinlist" element={<CoinList />} />
       <Route path="/guide" element={<Guide />} />
       <Route path="/detail/:name" element={<Wrapper />} />
     </Routes>
