@@ -7,26 +7,29 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Routes, Route, useLocation, useParams } from 'react-router-dom';
 import Guide from './materialcomponent/guide';
 import Hello from './component/hello';
+import { SettingProvider } from './context/context';
 
 //const root = ReactDOM.createRoot(document.getElementById('root'));
 
 const Wrapper = (props) => {
   const params = useParams();
   const location = useLocation();
-  return <CoinListItemDetail {...{...props, match: {params}, location} } />
+  return <CoinListItemDetail {...{ ...props, match: { params }, location }} />
 }
 
 ReactDOM.render(
-<React.StrictMode>
-  <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<Hello />} />
-      <Route path="/coinlist" element={<CoinList />} />
-      <Route path="/guide" element={<Guide />} />
-      <Route path="/detail/:name" element={<Wrapper />} />
-    </Routes>
-  </BrowserRouter>
-</React.StrictMode>, document.getElementById('root'));
+  <React.StrictMode>
+    <SettingProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Hello />} />
+          <Route path="/coinlist" element={<CoinList />} />
+          <Route path="/guide" element={<Guide />} />
+          <Route path="/detail/:name" element={<Wrapper />} />
+        </Routes>
+      </BrowserRouter>
+    </SettingProvider>
+  </React.StrictMode>, document.getElementById('root'));
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

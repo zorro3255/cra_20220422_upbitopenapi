@@ -65,7 +65,7 @@ class Navigation extends React.Component {
                 <CSSBlock>
                     <div className="Nlnb">
                         <ul className="Nnav">
-                            <li className="Nnav_cell"><Link to="/">코인목록</Link></li>
+                            <li className="Nnav_cell"><Link to="/coinlist">코인목록</Link></li>
                             <li className="Nnav_cell"><Link to="/guide">안내</Link></li>
                         </ul>
                     </div>
