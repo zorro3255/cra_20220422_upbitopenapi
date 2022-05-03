@@ -24,7 +24,7 @@ class Hello extends React.Component {
                     <div><Link to="/coinlist">들어가기</Link></div>
                     <div>{this.state.seconds}초후 목록으로 이동</div>
                         <SettingConsumer>{
-                            value => <div style={{margin:'10px 0px'}}><input type="radio" id="ko" name="languageSetting" value="ko" checked onChange={() => value.action.setLang('ko')} /><label htmlFor="ko">한국어</label>&nbsp;&nbsp;&nbsp;<input type="radio" id="en" name="languageSetting" value="en" onChange={() => value.action.setLang('en')} /><label htmlFor="en">영어</label></div>}               
+                            value => <div style={{margin:'10px 0px'}}><input type="radio" id="ko" name="languageSetting" value="ko" checked={value.state.lang==='ko'?true:false} onChange={() => value.action.setLang('ko')} /><label htmlFor="ko">한국어</label>&nbsp;&nbsp;&nbsp;<input type="radio" id="en" name="languageSetting" value="en" onChange={() => value.action.setLang('en')} checked={value.state.lang==='en'?true:false} /><label htmlFor="en">영어</label></div>}               
                         </SettingConsumer>       
                 </div>
             </React.Fragment>
