@@ -4,7 +4,7 @@ import './index.css';
 import CoinList from './materialcomponent/coinlist';
 import CoinListItemDetail from './materialcomponent/coinlistitemdetail';
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter, Routes, Route, useLocation, useParams } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useLocation, useParams, useNavigate } from 'react-router-dom';
 import Guide from './materialcomponent/guide';
 import Hello from './component/hello';
 import { SettingProvider } from './context/context';
@@ -17,12 +17,17 @@ const Wrapper = (props) => {
   return <CoinListItemDetail {...{ ...props, match: { params }, location }} />
 }
 
+const Wrapper1 = (props) => {
+  const navigate = useNavigate();
+  return <Hello {...{ ...props, navigate }} />
+}
+
 ReactDOM.render(
   <React.StrictMode>
     <SettingProvider>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Hello />} />
+          <Route path="/" element={<Wrapper1 />} />
           <Route path="/coinlist" element={<CoinList />} />
           <Route path="/guide" element={<Guide />} />
           <Route path="/detail/:name" element={<Wrapper />} />

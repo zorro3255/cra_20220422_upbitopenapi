@@ -4,12 +4,25 @@ import { Link } from 'react-router-dom';
 import {SettingConsumer} from '../context/context';
 
 class Hello extends React.Component {
+    state={
+        seconds: 10
+    }
+
+    componentDidMount(){
+        const timer = setInterval(
+            ()=>{this.setState({seconds: this.state.seconds - 1}, 
+                ()=>{if(this.state.seconds===0){
+            clearInterval(timer);this.props.navigate('/coinlist')
+        }})}, 1000);
+    }
+
     render() {
         return (
             <React.Fragment>
                 <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', minHeight: '95vh' }}>
                     <img width="30%" src={bitcoin} alt="bitcoin" />
                     <div><Link to="/coinlist">들어가기</Link></div>
+                    <div>{this.state.seconds}초후 목록으로 이동</div>
                         <SettingConsumer>{
                             value => <div style={{margin:'10px 0px'}}><input type="radio" id="ko" name="languageSetting" value="ko" checked onChange={() => value.action.setLang('ko')} /><label htmlFor="ko">한국어</label>&nbsp;&nbsp;&nbsp;<input type="radio" id="en" name="languageSetting" value="en" onChange={() => value.action.setLang('en')} /><label htmlFor="en">영어</label></div>}               
                         </SettingConsumer>       
