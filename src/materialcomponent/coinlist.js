@@ -28,14 +28,23 @@ class CoinList extends React.Component {
     tempSearhWord = '';
 
     FilterAndSortData(data) {
+        const list = data.filter(item => item.market.indexOf('KRW-') > -1 && (item.korean_name.indexOf(this.state.searchWord) > -1 || item.english_name.indexOf(this.state.searchWord) > -1)).map(item => item.market);
+        console.log(list.join(','));
         return data.filter(item => item.market.indexOf('KRW-') > -1 && (item.korean_name.indexOf(this.state.searchWord) > -1 || item.english_name.indexOf(this.state.searchWord) > -1)).sort((a, b) => a.korean_name > b.korean_name ? -1 : 1);
     }
 
     getData = () => {
         const url = 'https://api.upbit.com/v1/market/all?isDetails=true';
+        const url2 = 'https://api.upbit.com/v1/ticker?markets=';
         axios.get(url).then(response => {
-            this.setState({ data: this.FilterAndSortData(response.data), call: true });
-        }).catch(error => console.error(error));
+            const aaa = response.data;
+            const url3 = `${url2}${this.FilterAndSortData(response.data).map(item => item.market).join(',')}`;
+            console.log(url3);
+            axios.get(url3).then(response => { console.log(response.data); this.setState({ data: response.data.map(item => {
+                const bbb = aaa.filter(item1 => item1.market===item.market)[0]; return {...item, ...bbb};
+            }), call: true }) 
+        })}
+        ).catch(error => console.error(error));
     };
 
     componentDidMount() {
@@ -60,6 +69,10 @@ class CoinList extends React.Component {
         this.tempSearchWord = e.target.value;
     };
 
+    AddComma(num){
+        return String(num).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
     render() {
         return (
             <React.Fragment>
@@ -74,6 +87,7 @@ class CoinList extends React.Component {
                             <TableRow>
                                 <TableCell>업비트 제공<br />시장 정보</TableCell>
                                 <TableCell>암호화폐명</TableCell>
+                                <TableCell>현재가</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
@@ -82,6 +96,7 @@ class CoinList extends React.Component {
                                     검색결과가 없습니다.</TableCell></TableRow> : this.state.data.map(item => (<TableRow key={item.market}>
                                         <TableCell scope="row">{item.market}</TableCell>
                                         <TableCell align="left"><Link to={{pathname:`/detail/${item.market}?korean_name=${encodeURIComponent(item.korean_name)}`}}><SettingConsumer>{value => {let name = value.state.lang === 'en' ? item.english_name : item.korean_name; return name;}}</SettingConsumer>{item.market_warning === 'CAUTION' ? <span className="warning">*</span> : null}</Link></TableCell>
+                                        <TableCell align="right">{this.AddComma(item.trade_price)}</TableCell>
                                     </TableRow>)))}
                         </TableBody>
                     </Table>
