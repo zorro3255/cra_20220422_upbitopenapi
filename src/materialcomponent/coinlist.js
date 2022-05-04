@@ -2,14 +2,12 @@ import React from 'react';
 import axios from 'axios';
 import '../component/coin.css';
 import Header from '../component/header';
-import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import {Link} from 'react-router-dom';
@@ -28,8 +26,8 @@ class CoinList extends React.Component {
     tempSearhWord = '';
 
     FilterAndSortData(data) {
-        const list = data.filter(item => item.market.indexOf('KRW-') > -1 && (item.korean_name.indexOf(this.state.searchWord) > -1 || item.english_name.indexOf(this.state.searchWord) > -1)).map(item => item.market);
-        console.log(list.join(','));
+        //const list = data.filter(item => item.market.indexOf('KRW-') > -1 && (item.korean_name.indexOf(this.state.searchWord) > -1 || item.english_name.indexOf(this.state.searchWord) > -1)).map(item => item.market);
+        //console.log(list.join(','));
         return data.filter(item => item.market.indexOf('KRW-') > -1 && (item.korean_name.indexOf(this.state.searchWord) > -1 || item.english_name.indexOf(this.state.searchWord) > -1)).sort((a, b) => a.korean_name > b.korean_name ? -1 : 1);
     }
 
@@ -39,8 +37,8 @@ class CoinList extends React.Component {
         axios.get(url).then(response => {
             const aaa = response.data;
             const url3 = `${url2}${this.FilterAndSortData(response.data).map(item => item.market).join(',')}`;
-            console.log(url3);
-            axios.get(url3).then(response => { console.log(response.data); this.setState({ data: response.data.map(item => {
+            //console.log(url3);
+            axios.get(url3).then(response => { /*console.log(response.data);*/ this.setState({ data: response.data.map(item => {
                 const bbb = aaa.filter(item1 => item1.market===item.market)[0]; return {...item, ...bbb};
             }), call: true }) 
         })}
@@ -48,7 +46,8 @@ class CoinList extends React.Component {
     };
 
     componentDidMount() {
-        this.getData();
+        //this.getData();
+        setInterval(() => {console.log('호출'); this.getData();}, 10000);
     }
 
     onClick = (e) => {
@@ -81,7 +80,7 @@ class CoinList extends React.Component {
                 <div className='search'>
                     <TextField label="암호화폐명" onKeyUp={this.onKeyUp} onBlur={this.onBlur} /> <Button variant="contained" color="primary" onClick={this.onClick}>검색</Button>
                 </div>
-                <TableContainer component={Paper}>
+                <TableContainer>
                     <Table aria-label="simple table">
                         <TableHead>
                             <TableRow>
