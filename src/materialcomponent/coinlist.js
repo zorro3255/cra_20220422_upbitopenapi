@@ -47,7 +47,7 @@ class CoinList extends React.Component {
 
     componentDidMount() {
         this.getData();
-        setInterval(() => {/*console.log('호출');*/ this.getData();}, 10000);
+        setInterval(() => {this.getData();}, 10000);
     }
 
     onClick = (e) => {
